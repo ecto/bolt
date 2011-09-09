@@ -1,0 +1,23 @@
+info it worked if it ends with ok
+verbose cli [ 'node',
+verbose cli   '/Users/ecto/local/node/bin/npm',
+verbose cli   'explore',
+verbose cli   'express' ]
+info using npm@1.0.18
+info using node@v0.4.11-pre
+verbose config file /Users/ecto/.npmrc
+verbose config file /Users/ecto/local/node/etc/npmrc
+ERR! Error: It doesn't look like express is installed.
+ERR!     at /Users/ecto/local/node/lib/node_modules/npm/lib/explore.js:23:43
+ERR!     at cb (/Users/ecto/local/node/lib/node_modules/npm/lib/utils/graceful-fs.js:31:9)
+ERR! Report this *entire* log at:
+ERR!     <http://github.com/isaacs/npm/issues>
+ERR! or email it to:
+ERR!     <npm-@googlegroups.com>
+ERR! 
+ERR! System Darwin 11.0.0
+ERR! command "node" "/Users/ecto/local/node/bin/npm" "explore" "express"
+ERR! cwd /Users/ecto/personal/mesh
+ERR! node -v v0.4.11-pre
+ERR! npm -v 1.0.18
+verbose exit [ 1, true ]
