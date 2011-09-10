@@ -14,6 +14,7 @@
 var crypto  = require('crypto'),
     express = require('express'),
     app     = express.createServer(),
+    net     = require('net'),
     pool    = [];
 
 /*
@@ -22,32 +23,40 @@ var crypto  = require('crypto'),
 app.get('/', function(req, res){
   res.send(pool);
 });
+app.listen(80);
+
+// Handle incoming 
+var server = net.createServer(function (c) {
+  console.log(arguments);
+  c.write('goodbye');
+});
+server.listen(1234, function(c){
+  console.log('Mesh server started...');
+  console.log(this);
+});
 
 /*
  * Allow a node to connect
  * Generate a name for the node
  * Add node to pool
  * Send confirmation
+ *
+ * \connect
  */
-app.post('/connect', function(req, res){
-  console.log(res);
-  res.send('OK');
-});
 
 /*
  * Allow a node to disconnect
  * Remove from pool and send confirmation
+ *
+ * \disconnect
  */
-app.post('/disconnect', function(req, res){
-});
 
 /*
  * Node has emitted an event
  * Disperse event to all nodes
+ *
+ * \emission
  */
-app.post('/emission', function(req, res){
-
-});
 
 /*
  * Generate a unique name for a node
@@ -75,4 +84,3 @@ function generateID(seed){
   else generateID();
 }
 
-app.listen(1234);
