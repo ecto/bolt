@@ -15,6 +15,7 @@ var crypto  = require('crypto'),
     express = require('express'),
     app     = express.createServer(),
     net     = require('net'),
+    rack    = require('hat').rack(),
     pool    = [];
 
 /*
@@ -27,13 +28,38 @@ app.listen(80);
 
 // Handle incoming 
 var server = net.createServer(function (c) {
-  console.log(arguments);
-  c.write('goodbye');
+  var id = rack();
+  c.write(id);
+  pool[id] = {
+    c: c,
+    join: +new Date()
+  }
+  c.on('data', incoming);
+  console.log(id + ' connected');
 });
+
+var incoming = function(m){
+  m = m.toString();
+  try {
+    var message = JSON.parse(m);
+    console.log(message.id + ' emitted ' + message.hook);
+    broadcast(m);
+  } catch (e) {
+    console.log('Could not parse: ' + m);
+  }
+};
+
 server.listen(1234, function(c){
   console.log('Mesh server started...');
-  console.log(this);
 });
+
+function broadcast(message) {
+  setTimeout(function(){ // to not wait for loop to finish
+    for (var i in pool) {
+      pool[i].c.write(message);
+    }
+  }, 1);
+}
 
 /*
  * Allow a node to connect

@@ -1,9 +1,9 @@
 var mesh = require('mesh').connect();
 
-mesh.on('pong', function(){
-  console.log('pong');
-});
-
 setInterval(function(){
-  mesh.emit('ping');
-}, 1000);
+  mesh.emit('ping', { hello: 'world' });
+}, 2000);
+
+mesh.on('pong', function(data){
+  console.log('Recieved pong!');
+});
