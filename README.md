@@ -30,6 +30,12 @@ To run the demo:
 
 ### mesh.connect(host, port)
 
+Returns an mesh object, which acts as an analog of an EventEmitter.
+
 ### mesh.emit(hook, data)
 
+Emit an event to all nodes in the mesh, with JSON, string or integer as data.
+
 ### mesh.on(hook, callback)
+
+Watch for an event from self or the mesh. You can get the data from callback(data)
