@@ -1,0 +1,21 @@
+{
+  "author": "Cam Pedersen <cam@onswipe.com> (http://campedersen.com/)",
+  "name": "mesh",
+  "description": "Send messages to any process, anywhere on the Internet.",
+  "version": "0.0.0",
+  "homepage": "http://station.io/",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ecto/node-mesh.git"
+  },
+  "main": "index.js",
+  "engines": {
+    "node": "~v0.4.10"
+  },
+  "bin": {"mesh", "./bin/mesh"}
+  "dependencies": {
+    "hat",
+    "express"
+  },
+  "devDependencies": {}
+}
