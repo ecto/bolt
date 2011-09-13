@@ -1,12 +1,12 @@
 {
   "author": "Cam Pedersen <cam@onswipe.com> (http://campedersen.com/)",
   "name": "bolt",
-  "description": "Send messages to any process, anywhere on the Internet.",
+  "description": "Send messages to any nodejs process, anywhere on the Internet.",
   "version": "0.0.0",
   "homepage": "http://bolt.io/",
   "repository": {
     "type": "git",
-    "url": "git://github.com/ecto/node-mesh.git"
+    "url": "git://github.com/ecto/bolt.git"
   },
   "main": "index.js",
   "engines": {
