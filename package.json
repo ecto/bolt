@@ -12,10 +12,10 @@
   "engines": {
     "node": "~v0.4.10"
   },
-  "bin": {"mesh", "./bin/mesh"}
+  "bin": {"mesh": "./bin/mesh"},
   "dependencies": {
-    "hat",
-    "express"
+    "hat": "0.0.3",
+    "express": "2.4.6"
   },
   "devDependencies": {}
 }
