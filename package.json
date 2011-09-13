@@ -1,9 +1,9 @@
 {
   "author": "Cam Pedersen <cam@onswipe.com> (http://campedersen.com/)",
-  "name": "mesh",
+  "name": "bolt",
   "description": "Send messages to any process, anywhere on the Internet.",
   "version": "0.0.0",
-  "homepage": "http://station.io/",
+  "homepage": "http://bolt.io/",
   "repository": {
     "type": "git",
     "url": "git://github.com/ecto/node-mesh.git"
@@ -12,10 +12,6 @@
   "engines": {
     "node": "~v0.4.10"
   },
-  "bin": {"mesh": "./bin/mesh"},
-  "dependencies": {
-    "hat": "0.0.3",
-    "express": "2.4.6"
-  },
+  "dependencies": {},
   "devDependencies": {}
 }
