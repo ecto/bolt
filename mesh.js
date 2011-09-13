@@ -19,22 +19,26 @@ var crypto  = require('crypto'),
     pool    = [];
 
 /*
- * Render a page displaying the status of the mesh
+ * HTTP server
  */
 app.get('/', function(req, res){
   res.send(pool);
 });
 app.listen(80);
 
-// Handle incoming 
+/*
+ * TCP server
+ */
 var server = net.createServer(function (c) {
   var id = rack();
   c.write(id);
+  c.on('data', incoming);
+  c.on('close', disconnected);
+  c.id = id;
   pool[id] = {
     c: c,
     join: +new Date()
   }
-  c.on('data', incoming);
   console.log(id + ' connected');
 });
 
@@ -48,6 +52,12 @@ var incoming = function(m){
     console.log('Could not parse: ' + m);
   }
 };
+
+var disconnected = function(){
+  delete pool[this.id];
+  console.log(this.id + ' disconnected');
+  console.log(pool.length);
+}
 
 server.listen(1234, function(c){
   console.log('Mesh server started...');
