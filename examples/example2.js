@@ -1,4 +1,4 @@
-var mesh = require('bolt').connect();
+var mesh = require('../').connect();
 
 mesh.on('ping', function(){
   mesh.emit('pong');
