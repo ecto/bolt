@@ -1,4 +1,4 @@
-var mesh = require('../').connect();
+var mesh = require('../').connect({ name: 'ralph' });
 
 setInterval(function(){
   mesh.emit('ping', { hello: 'world' });
