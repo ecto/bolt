@@ -1,14 +1,26 @@
-#node-mesh
+# bolt
 
 Realtime inter-process EventEmitters what?
 
 ## Send messages to any process, anywhere on the Internet.
 
-This isn't a real mesh. **node-mesh** simply intercepts EventEmitter API calls and shares them between processes.
+**bolt** intercepts EventEmitter API calls and shares them between processes.
+
+## features
+
+  - Realtime monitoring with bolt-server
+  - Autoreconnection
+  - Authentication soon
+
+## install
+
+    npm install bolt
+
+## example
 
 Bring it in like this:
 
-    var mesh = require('mesh').connect();
+    var mesh = require('bolt').connect();
 
 And then you can do things like this in one process:
 
@@ -20,17 +32,31 @@ And then you can do things like this in one process:
       console.log('world');
     });
 
-To run the demo:
+To run the demo, you must have :
 
-    sudo ./mesh.sh
-    node example.js
-    node example2.js
+    sudo node mesh
+    node example
+    node example2
+    node example3
 
 ## API
 
-### mesh.connect(host, port)
+### mesh.name(name)
+
+Sets flag to request name from server. If the name is available, the server will allow it.
+
+    var mesh = require('bolt').name('foo').connect();
+
+### mesh.connect(options)
 
 Returns an mesh object, which acts as an analog of an EventEmitter.
+
+Options accepts host and port arguments and defaults to:
+
+    {
+      host: '127.0.0.1',
+      port: 1234
+    }
 
 ### mesh.emit(hook, data)
 
