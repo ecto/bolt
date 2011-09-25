@@ -1,3 +1,5 @@
+![bolt](http://i.imgur.com/nMj8o.png)
+
 # bolt
 
 Realtime inter-process EventEmitters what?
@@ -32,14 +34,14 @@ And then you can do things like this in one process:
       console.log('world');
     });
 
-To run the demo, you must have :
+To run the demo, you must have bolt-server running:
 
     sudo node mesh
     node example
     node example2
     node example3
 
-## API
+## methods
 
 ### mesh.name(name)
 
