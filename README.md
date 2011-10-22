@@ -22,7 +22,7 @@ Realtime inter-process EventEmitters what?
 
 Bring it in like this:
 
-    var mesh = require('bolt')();
+    var mesh = require('bolt').connect();
 
 And then you can do things like this in one process:
 
@@ -43,14 +43,19 @@ To run the demo, you must have bolt-server running:
 
 ## methods
 
-### constructor
+### mesh.name(name)
+
+Sets flag to request name from server. If the name is available, the server will allow it.
+
+    var mesh = require('bolt').name('foo').connect();
+
+### mesh.connect(options)
 
 Returns an mesh object, which acts as an analog of an EventEmitter.
 
-Options accepts name, host, and port arguments and defaults to:
+Options accepts host and port arguments and defaults to:
 
     {
-      name: null,
       host: '127.0.0.1',
       port: 1234
     }
