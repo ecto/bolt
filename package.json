@@ -12,6 +12,8 @@
   "engines": {
     "node": ">= 0.4.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "knife": "0.0.x"
+  },
   "devDependencies": {}
 }
