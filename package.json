@@ -13,7 +13,9 @@
     "node": ">= 0.4.1"
   },
   "dependencies": {
-    "knife": "0.0.x"
+    "knife": "0.0.x",
+    "hiredis": "*",
+    "redis": "*"
   },
   "devDependencies": {}
 }
