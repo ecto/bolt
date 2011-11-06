@@ -2,7 +2,7 @@
   "author": "Cam Pedersen <cam@onswipe.com> (http://campedersen.com/)",
   "name": "bolt",
   "description": "Send messages to any nodejs process, anywhere on the Internet.",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "homepage": "http://bolt.io/",
   "repository": {
     "type": "git",
@@ -13,8 +13,6 @@
     "node": ">= 0.4.1"
   },
   "dependencies": {
-    "knife": "0.0.x",
-    "hiredis": "*",
     "redis": "*"
   },
   "devDependencies": {}
