@@ -1,4 +1,10 @@
-var mesh = require('../').connect({ name: 'ralph' });
+var bolt = require('../');
+
+var mesh = new bolt.Node({
+  debug: false
+});
+
+mesh.start();
 
 setInterval(function(){
   mesh.emit('ping', { hello: 'world' });

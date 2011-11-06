@@ -5,4 +5,6 @@
  * Written on a plane from SFO to JFK
  */
 
-module.exports = require('./lib/mesh.js');
+module.exports = exports = {
+  Node: require('./lib/node.js')
+}
