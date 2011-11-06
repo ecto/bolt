@@ -13,7 +13,8 @@
     "node": ">= 0.4.1"
   },
   "dependencies": {
-    "redis": "*"
+    "redis": "*",
+    "colors": "*"
   },
   "devDependencies": {}
 }
