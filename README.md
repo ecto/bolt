@@ -1,6 +1,6 @@
 # bolt
 
-Realtime inter-process EventEmitters what?
+Distributed realtime EventEmitters through Redis pubsub what
 
 ![bolt](http://i.imgur.com/nMj8o.png)
 
@@ -10,9 +10,12 @@ Realtime inter-process EventEmitters what?
 
 ## features
 
-  - Realtime monitoring with bolt-server
+  - Realtime monitoring with **bolt-monitor**
   - Autoreconnection
-  - Authentication soon
+  - Authentication
+  - Event stream piping (soon)
+  - Remote Method Invocation (soon)
+  - Method sharting through function decomposition and reconstruction across nodes (soon)
 
 ## install
 
@@ -22,7 +25,11 @@ Realtime inter-process EventEmitters what?
 
 Bring it in like this:
 
-    var mesh = require('bolt').connect();
+    var bolt = require('bolt');
+
+    var mesh = new bolt.Node();
+
+    mesh.start();
 
 And then you can do things like this in one process:
 
@@ -34,39 +41,48 @@ And then you can do things like this in one process:
       console.log('world');
     });
 
-To run the demo, you must have bolt-server running:
+I'm working on getting more functionality in the examples folder, but those there should still prove useful.
 
-    sudo node mesh
-    node example
-    node example2
-    node example3
+## philosophy
+
+**bolt**'s main functionality lies in its Node class. Each instance of a Node can send and receive events.
+
+Each Node connects to a Redis server and opens two connections, an incoming subscription channel, and an outgoing publish and command channel.
+
+When instantiating a single Node, it is convention to name it `mesh`, reinforcing the paradigm of interconnected Nodes.
+
+It is possible to instantiate an army of Nodes from a single process, only limited by your open file limit (`ulimit -a`) and Redis's maxconn setting.
+
+If you would like to share events with the browser, it is preferable to use **bolt.js**, though you can also hijack the socket.io stream from **bolt-monitor** if you're feeling hackish.
 
 ## methods
 
-### mesh.name(name)
+### var node = new bolt.Node(options)
 
-Sets flag to request name from server. If the name is available, the server will allow it.
-
-    var mesh = require('bolt').name('foo').connect();
-
-### mesh.connect(options)
-
-Returns an mesh object, which acts as an analog of an EventEmitter.
-
-Options accepts host and port arguments and defaults to:
+`options` defaults to:
 
     {
       host: '127.0.0.1',
-      port: 1234
+      port: 6357,
+      debug: false,
+      auth: undefined
     }
 
-### mesh.emit(hook, data)
+### node.start()
+
+Create incoming and outgoing Redis connections, open the floddgates for events.
+
+It is customary to define event listeners before calling this method.
+
+### node.emit(hook, data)
 
 Emit an event to all nodes in the mesh, with JSON, string or integer as data.
 
-### mesh.on(hook, callback)
+### node.on(hook, callback)
 
 Watch for an event from self or the mesh. You can get the data from callback(data)
+
+### Working on support right now for other native EventEmitter methods such as `.once()`
 
 ## license
 
