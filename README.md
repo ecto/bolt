@@ -65,6 +65,7 @@ If you would like to share events with the browser, it is preferable to use **bo
       host: '127.0.0.1',
       port: 6357,
       debug: false,
+      silent: false,
       auth: undefined
     }
 
