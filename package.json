@@ -14,7 +14,8 @@
   },
   "dependencies": {
     "redis": "*",
-    "colors": "*"
+    "colors": "*",
+    "eventemitter2": "*"
   },
   "devDependencies": {}
 }
