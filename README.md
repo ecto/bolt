@@ -13,9 +13,9 @@ Distributed realtime EventEmitters through Redis pubsub what
   - Realtime monitoring with **bolt-monitor**
   - Autoreconnection
   - Authentication
-  - Event stream piping (soon)
-  - Remote Method Invocation (soon)
-  - Method sharting through function decomposition and reconstruction across nodes (soon)
+  - Event stream piping (soon) (pull request!)
+  - Remote Method Invocation (soon) (pull request!)
+  - Method sharing through function decomposition and reconstruction across nodes (soon) (pull request!)
 
 ## install
 
@@ -82,6 +82,14 @@ Emit an event to all nodes in the mesh, with JSON, string or integer as data.
 ### node.on(hook, callback)
 
 Watch for an event from self or the mesh. You can get the data from callback(data)
+
+You can provide an error handler for Bolt to prevent it from throwing:
+
+````javascript
+mesh.on('error', function (e) {
+  console.log(e);
+});
+````
 
 ### Working on support right now for other native EventEmitter methods such as `.once()`
 
