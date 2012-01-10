@@ -1,8 +1,6 @@
 /*
- * Mesh
- * Cam Pedersen
- * Sept 8, 2011
- * Written on a plane from SFO to JFK
+ * bolt
+ * <cam@onswipe.com>
  */
 
 module.exports = exports = {
