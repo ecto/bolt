@@ -25,21 +25,27 @@ Distributed realtime EventEmitters through Redis pubsub what
 
 Bring it in like this:
 
-    var bolt = require('bolt');
+````javascript
+var bolt = require('bolt');
 
-    var mesh = new bolt.Node();
+var mesh = new bolt.Node();
 
-    mesh.start();
+mesh.start();
+````
 
 And then you can do things like this in one process:
 
-    mesh.emit('hello');
+````javascript
+mesh.emit('hello');
+````
 
 ...and in another process:
 
-    mesh.on('hello', function(){
-      console.log('world');
-    });
+````javascript
+mesh.on('hello', function(){
+  console.log('world');
+});
+````
 
 I'm working on getting more functionality in the examples folder, but those there should still prove useful.
 
@@ -61,17 +67,19 @@ If you would like to share events with the browser, it is preferable to use **bo
 
 `options` defaults to:
 
-    {
-      host: '127.0.0.1',
-      port: 6357,
-      debug: false,
-      silent: false,
-      auth: undefined
-    }
+````javascript
+{
+  host: '127.0.0.1',
+  port: 6357,
+  debug: false,
+  silent: false,
+  auth: undefined
+}
+````
 
 ### node.start()
 
-Create incoming and outgoing Redis connections, open the floddgates for events.
+Create incoming and outgoing Redis connections, open the floodgates for events.
 
 It is customary to define event listeners before calling this method.
 
@@ -90,8 +98,6 @@ mesh.on('error', function (e) {
   console.log(e);
 });
 ````
-
-### Working on support right now for other native EventEmitter methods such as `.once()`
 
 ## license
 
