@@ -2,172 +2,138 @@
 <html>
 <head>
   <meta charset='utf-8'>
-
-  <title>bolt - distributed EventEmitters for node.js</title>
-
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      font-size: 16px;
-      font-family: Menlo, 'Andale Mono', 'Courier New', Courier, Arial, san-serif;
-      color: #000000;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 {
-      font-size: 3.8em;
-      margin-bottom: 3px;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      text-align: center;
-    }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #000; margin-top: 60px; }
-    h3 { text-align: center; color: #7b1a4b; }
-    a { color: #000; }
-    .description {
-      font-size: 1.2em;
-      margin-bottom: 80px;
-      margin-top: 30px;
-      text-align: center;
-    }
-    .download { float: right; }
-    pre {
-      background: #eee;
-      color: #666;
-      padding: 15px;
-      border-radius: 5px;
-      -webkit-transition: box-shadow 0.1s linear;
-    }
-    hr {
-      border: 0;
-      width: 80%;
-      border-bottom: 1px solid #aaa;
-    }
-    .footer {
-      text-align: center;
-      padding-top: 60px;
-      color: #aaa;
-    }
-    .footer a { color: #aaa; }
-    .button {
-      position: relative;
-      top: -30px;
-      background-color: #7fbf4d;
-      background-image: -webkit-gradient(linear, left top, left bottom, from(#7fbf4d), to(#63a62f));
-      /* Saf4+, Chrome */
-      background-image: -webkit-linear-gradient(top, #7fbf4d, #63a62f);
-      background-image: -moz-linear-gradient(top, #7fbf4d, #63a62f);
-      background-image: -ms-linear-gradient(top, #7fbf4d, #63a62f);
-      background-image: -o-linear-gradient(top, #7fbf4d, #63a62f);
-      background-image: linear-gradient(top, #7fbf4d, #63a62f);
-      border: 1px solid #63a62f;
-      border-bottom: 1px solid #5b992b;
-      -webkit-border-radius: 3px;
-      -moz-border-radius: 3px;
-      -ms-border-radius: 3px;
-      -o-border-radius: 3px;
-      border-radius: 3px;
-      -webkit-box-shadow: inset 0 1px 0 0 #96ca6d;
-      -moz-box-shadow: inset 0 1px 0 0 #96ca6d;
-      -ms-box-shadow: inset 0 1px 0 0 #96ca6d;
-      -o-box-shadow: inset 0 1px 0 0 #96ca6d;
-      box-shadow: inset 0 1px 0 0 #96ca6d;
-      color: #fff;
-      line-height: 1;
-      padding: 7px 10px;
-      text-decoration: none;
-      text-align: center;
-      text-shadow: 0 -1px 0 #4c9021;
-      width: 150px; }
-    .button:hover {
-      background-color: #76b347;
-      background-image: -webkit-gradient(linear, left top, left bottom, from(#76b347), to(#5e9e2e));
-      /* Saf4+, Chrome */
-      background-image: -webkit-linear-gradient(top, #76b347, #5e9e2e);
-      background-image: -moz-linear-gradient(top, #76b347, #5e9e2e);
-      background-image: -ms-linear-gradient(top, #76b347, #5e9e2e);
-      background-image: -o-linear-gradient(top, #76b347, #5e9e2e);
-      background-image: linear-gradient(top, #76b347, #5e9e2e);
-      -webkit-box-shadow: inset 0 1px 0 0 #8dbf67;
-      -moz-box-shadow: inset 0 1px 0 0 #8dbf67;
-      -ms-box-shadow: inset 0 1px 0 0 #8dbf67;
-      -o-box-shadow: inset 0 1px 0 0 #8dbf67;
-      box-shadow: inset 0 1px 0 0 #8dbf67;
-      cursor: pointer; }
-    .button:active {
-      border: 1px solid #5b992b;
-      border-bottom: 1px solid #538c27;
-      -webkit-box-shadow: inset 0 0 8px 4px #548c29, 0 1px 0 0 #eeeeee;
-      -moz-box-shadow: inset 0 0 8px 4px #548c29, 0 1px 0 0 #eeeeee;
-      -ms-box-shadow: inset 0 0 8px 4px #548c29, 0 1px 0 0 #eeeeee;
-      -o-box-shadow: inset 0 0 8px 4px #548c29, 0 1px 0 0 #eeeeee;
-      box-shadow: inset 0 0 8px 4px #548c29, 0 1px 0 0 #eeeeee; }
-  </style>
+  <title>Bolt - a framework</title>
+  <link rel="stylesheet" href="/style/global.css" />
   <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5208661-15']);
+  _gaq.push(['_trackPageview']);
 
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-5208661-15']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
   </script>
+  <script src="/script/jquery-1.7.2.min.js"></script>
+  <script src="/script/global.js"></script>
 </head>
-
 <body>
-  <a href="https://github.com/ecto/bolt"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
-
-  <div id="container">
-
-    <h1>
+  <div id="sidebar">
+    <h1 id="logo">
       <a href="https://github.com/ecto/bolt">
-        bolt<br />
-        <img src="https://a248.e.akamai.net/assets.github.com/img/9c89197d196e738af37908b3bb8be9437c40831e/687474703a2f2f692e696d6775722e636f6d2f6e4d6a386f2e706e67" alt="bolt logo" />
+        <img src="/img/bolt.png" alt="bolt" />
+        Bolt<br />
       </a>
     </h1>
-
     <div class="description">
-      Send messages to any node.js process, anywhere on the Internet.
+      A toolbelt for writing utile server-side JavaScripts.
     </div>
-
-    <p style="text-align: center;">
-      <a href="http://github.com/ecto/bolt" class="button">View on GitHub</a>
-    </p>
-
+    <input id="search" type="text" placeholder="Search" />
+    <div id="toc">
+      <a href="#">Getting Started</a>
+      <a href="#">Opinions</a>
+      <a href="#">Responding to requests</a>
+      <a href="#">Making requests</a>
+      <a href="#">Rendering templates</a>
+      <a href="#">Caching</a>
+      <a href="#">Persisting sessions</a>
+      <a href="#">Emitting data</a>
+      <a href="#">Listening for events</a>
+      <a href="#">Clustering</a>
+      <a href="#">Testing</a>
+      <a href="#">Contributing</a>
+    </div>
+  </div>
+  <div id="container">
     <p>
-      <strong>bolt</strong> intercepts EventEmitter emissions and shoots them over Redis pubsub.
-      All <strong>bolt</strong> nodes will receive these events and trigger emissions themselves.
-      This allows for simple, advanced inter-process message passing around the same system or between systems.
-    </p>
-
-    <h2>install</h2>
+      Greetings, Internet visitor! You have stumbled upon <strong>Bolt</strong>,
+      a library intended to make life easy.
+    <h2>Getting Started</h2>
     <pre>npm install bolt</pre>
 
-    <h2>usage</h2>
+    <h3>Make a new Bolt</h3>
 <pre>
-var bolt = require('bolt');
+var Bolt = require('bolt');
+var $ = new Bolt();
+</pre>
 
-var mesh = new bolt.Node({
-  host: 'myserver.com'
-  auth: 'my redis password'
-});
-
-mesh.start();
-
-mesh.on('ping', function(){
-  mesh.emit('pong');
+    <h3>Opinions</h3>
+    <p>Web development with node should be fast and easy.</p>
+    <p>Modularity is one of the best features of node. Several modules have emerged that are both ubiquitous requirements for most web projects, and higher quality than their counterparts. Bolt takes advantage of these modules by including them by default: users are not forced to hunt down the gems, but rather given them for free.</p>
+    <p>This approach is not for everyone. If the modules that are included with Bolt are not satisfactory, they can be overridden.</p>
+    
+    <h3>Responding to requests</h3>
+<pre>
+$.get('/', function (req, res) {
+  res.send('Hello, world.');
 });
 </pre>
+
+    <h3>Dynamic routing</h3>
+<pre>
+var users = [
+  johnny: {
+    type: 'dog',
+    name: 'Johnny'
+  }
+];
+
+$.get('/:user', function (req, res) {
+  res.render('Hello, world.', {
+    user: users[req.params.user]
+  });
+});
+</pre>
+
+    <h3>Making requests</h3>
+    <p>Bolt uses <a href="https://github.com/mikeal/request">mikeal's request</a> module. It's awesome! Here is a simple proxy:</p>
+<pre>
+$.get('/proxy', function (req, res) {
+  $.request('http://google.com', function (err, response, body) {
+    res.send(body);
+  });
+});
+</pre>
+
+    <p>Simple streams!</p>
+<pre>
+$.get('/:query', function (req, res) {
+  var q = encodeURIComponent(req.params.query);
+  request.get('http://google.com/?q=' + q).pipe(res);
+});
+</pre>
+
+    <h3>Rendering templates</h3>
+<pre>
+var johnny = {
+  type: 'dog',
+  name: 'Johnny'
+};
+
+$.get('/user', function (req, res) {
+  res.render('Hello, world.', {
+    user: johnny
+  });
+});
+</pre>
+
+
+    <h3>Caching</h3>
+
+    <h3>Persisting sessions</h3>
+
+    <h3>Emitting data</h3>
+
+    <h3>Listening for events</h3>
+
+    <h3>Clustering</h3>
+
+    <h3>Testing</h3>
+
   
-    <h2>contribute</h2>
-    <p>Pull requests are greatly appreciated!</p>
+    <h3>Contributing</h3>
+    <p>Bolt is open-source software!</p>
     <p>
       You can download this project in either
       <a href="https://github.com/ecto/bolt/zipball/master">zip</a> or
@@ -175,13 +141,8 @@ mesh.on('ping', function(){
     </p>
     <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
       by running:
-      <pre>$ git clone git://github.com/ecto/bolt</pre>
+      <pre>git clone git://github.com/ecto/bolt</pre>
     </p>
-
-    <div class="footer">
-      an <a href="http://twitter.com/campedersen">ecto</a> job
-    </div>
-
   </div>
 
 </body>
