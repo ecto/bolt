@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/ecto/bolt.png)](http://travis-ci.org/ecto/bolt)
 # bolt
 
 Distributed realtime EventEmitters through Redis pubsub what
